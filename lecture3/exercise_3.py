@@ -35,28 +35,34 @@ Note: This exercise should be done using only the statements and other features 
 Solution: http://thinkpython2.com/code/grid.py. Credit: This exercise is based on an exercise in Oualline, Practical C Programming, Third Edition, O’Reilly Media, 1997.
 
 """
-def print_line_type1():
-    print("+", "- "*4 + "+", "- "*4 +  "+")
+def do_twice(fun):
+    fun()
+    fun()
 
-def print_line_type2():
-    print(("/" + "  "*4 + " ")*2 + "/")
+def do_fourth(fun):
+    do_twice(fun)
+    do_twice(fun)
+
+def print_beam():
+    print("+ " + "- "*4, end = '')
+
+def print_block():
+    print("/ " + "  "*4, end = '')
+
+def print_line():
+    do_twice(print_beam)
+    print("+")
+
+def print_block_line():
+    do_twice(print_block)
+    print("/")
+
+def print_half_grid():
+    print_line()
+    do_fourth(print_block_line)
 
 def grid():
-    print_line_type1()
-    print_line_type2()
-    print_line_type2()
-    print_line_type2()
-    print_line_type2()
-    print_line_type1()
-    print_line_type2()
-    print_line_type2()
-    print_line_type2()
-    print_line_type2()
-    print_line_type1()
+    do_twice(print_half_grid)
+    print_line()
 
 grid()
-
-
-
-
-
